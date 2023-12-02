@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <main>
+        <% allBlogs.forEach(item => {%>
+            <section class="post">
+                <h2 class="name"> <%= item.name %></h2>
+                <p class="description"><%= item.description %></p>
+                <p class="date"><%= item.date%></p>
+            </section>
+       <% })%>
+    </main>
+
+    <footer>
+        <p>&copy; 2022 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
