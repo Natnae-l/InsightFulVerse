@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const blogs = require('../model/blogmodel');
+const moment = require('moment');
 
 showblogs = asyncHandler(async (req, res, next) => {
        blogs.find()
@@ -19,7 +20,7 @@ showformpage = asyncHandler(async (req, res, next) => {
 //post methods
 addblog = asyncHandler( async (req, res, next) => {
   let newComing = req.body;
-  newComing.date = new Date();
+  newComing.date = moment(new Date()).format("MMMM, D YYYY");
 
   let newBlog = new blogs(newComing);
   newBlog.save()
