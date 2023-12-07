@@ -1,23 +1,76 @@
 const mongoose = require('mongoose');
 const asyncHandler = require('express-async-handler');
-const user = require('../model/usermodel');
+const User = require('../model/usermodel');
+const bcrypt = require('bcrypt');
+const express = require('express');
+const passport = require('passport');
 
-// user Dashboard
-dashboard = asyncHandler(async (req, res, next) => {
-        res.send('show dashboard')
-  });
+
 // get a registration form
-registerForm = asyncHandler((req, res, next) => {
+registerForm = asyncHandler(async (req, res, next) => {
     res.render('register')
   });
 // get a login form
-loginForm = asyncHandler((req, res, next) => {
+loginForm = asyncHandler(async (req, res, next) => {
     res.render('login')
   })
 
 // register a new user
+authenticateUser = asyncHandler(async (req, res, next) => {
+  const { name, email, password, password2 } = req.body;
+  let errors = [];
+
+  if (!name || !email || !password || !password2) {
+    errors.push({ msg: 'Please enter all fields' });
+  }
+
+  if (password != password2) {
+    errors.push({ msg: 'Passwords do not match' });
+  }
+
+  if (password.length < 6) {
+    errors.push({ msg: 'Password must be at least 6 characters' });
+  }
+
+  if (errors.length > 0) {
+    res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      password2
+    });
+  } else {
+    User.findOne({ email: email }).then(user => {
+      if (user) {
+        errors.push({ msg: 'Email already exists' });
+        res.render('login');
+      } else {
+        const newUser = new User({
+          name,
+          email,
+          password
+        });
+
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then(user => {
+                res.redirect('/users/login');
+              })
+              .catch(err => console.log(err));
+          });
+        });
+      }
+    });
+  }
+  next()
+})
 addUser = asyncHandler((req, res, next) => {
-    console.log(req.body)
+  
 })
 // export controllers
-module.exports = {dashboard, registerForm, loginForm, addUser}
+module.exports = {registerForm, loginForm,authenticateUser, addUser}
