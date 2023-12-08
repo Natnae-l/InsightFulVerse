@@ -9,15 +9,8 @@
 </head>
 <body>
    <%- include('./partials/header')%>
-  <nav class=" p-4 mb-1 bg-body-tertiary rounded d-flex justify-content-between flex-column mb-3">
-
-    <section class="d-flex gp-2 justify-content-between flex-column mb-3">
-            <a class="btn btn-outline-primary" href="/addblogs">ADD BLOGS</a> 
-            <button type="button" class="btn btn-outline-secondary">My blogs</button>
-    </section>
-
-    <a href="/users/logout" class="btn btn-outline-dark">Logout</a>
-  </nav>
+   <%- include('./partials/nav')%>
+  
   <main class="p-6 overflow-scroll">
     <section class="p-4">
         <h3 class="mb-4">My blogs</h3>
@@ -31,11 +24,6 @@
         </div>
     </section>   
   </main>
-  <footer class="shadow-sm p-1 mb-1 bg-body-tertiary rounded d-flex justify-content-center">
-    <p class="text-body-secondary">
-        @2023
-      </p>
-  </footer>
-
+  <%- include('./partials/footer')%>
 </body>
 </html>
