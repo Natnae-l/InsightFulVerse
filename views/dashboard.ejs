@@ -3,12 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard Name</title>
+    <link rel="stylesheet" href="/stylesheets/dash.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-   <h1 class="mt-4">Dashboard</h1>
+   <%- include('./partials/header')%>
+  <nav class=" p-4 mb-1 bg-body-tertiary rounded d-flex justify-content-between flex-column mb-3">
 
-    <a href="/users/logout" class="btn btn-secondary">Logout</a> 
+    <section class="d-flex gp-2 justify-content-between flex-column mb-3">
+            <a class="btn btn-outline-primary" href="/addblogs">ADD BLOGS</a> 
+            <button type="button" class="btn btn-outline-secondary">My blogs</button>
+    </section>
+
+    <a href="/users/logout" class="btn btn-outline-dark">Logout</a>
+  </nav>
+  <main class="p-6 overflow-scroll">
+    <section class="p-4">
+        <h3 class="mb-4">My blogs</h3>
+       
+        <div class="card mb-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title font-popins">Title</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <p>02, Jan 2024</p>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+        </div>
+    </section>   
+  </main>
+  <footer class="shadow-sm p-1 mb-1 bg-body-tertiary rounded d-flex justify-content-center">
+    <p class="text-body-secondary">
+        @2023
+      </p>
+  </footer>
+
 </body>
 </html>

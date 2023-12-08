@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const passport = require('passport');
 
-
 // get a registration form
 registerForm = asyncHandler(async (req, res, next) => {
     res.render('register')
@@ -72,5 +71,25 @@ authenticateUser = asyncHandler(async (req, res, next) => {
 addUser = asyncHandler((req, res, next) => {
   
 })
+
+// login user
+logInUser = (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/users/login',
+    failureFlash: true
+  })(req, res, next);
+};
+
+//logOut user
+logOutUser = (req, res) => {
+  req.logout(function(err) {
+    if (err) { return next(err); }    
+    req.flash('success_msg', 'You are logged out');
+
+    res.redirect('/users/login');
+  })};
+
+  
 // export controllers
-module.exports = {registerForm, loginForm,authenticateUser, addUser}
+module.exports = {registerForm, loginForm, authenticateUser, addUser, logOutUser, logInUser}

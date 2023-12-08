@@ -21,5 +21,15 @@
     "nodemon": "^3.0.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^10.2.5",
+    "tailwindcss": "^3.3.6"
+  },
+  "description": "",
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

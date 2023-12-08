@@ -8,26 +8,18 @@ const passport = require('passport');
 // get a registeration form
 router.get('/register', forwardAuthenticated, userControllers.registerForm)
 
-// user login
+// user login form
 router.get('/login', forwardAuthenticated, userControllers.loginForm)
 
 // register a new user
 
-router.post('/register',userControllers.authenticateUser, userControllers.addUser)
+router.post('/register', forwardAuthenticated, userControllers.authenticateUser, userControllers.addUser)
 
-router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-      successRedirect: '/users/register',
-      failureRedirect: '/users/login',
-      failureFlash: true
-    })(req, res, next);
-  });
+//login a user
+
+router.post('/login', userControllers.logInUser);
   
-  // Logout
-  router.get('/logout', (req, res) => {
-    req.logout();
-    req.flash('success_msg', 'You are logged out');
-    res.redirect('/users/login');
-  });
+// Logout
+router.get('/logout',ensureAuthenticated, userControllers.logOutUser);
 
 module.exports = router;
