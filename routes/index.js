@@ -10,7 +10,9 @@ router.get('/blogs', blogcontroller.showblogs);
 router.get('/addblogs', ensureAuthenticated, blogcontroller.showformpage);
 
 router.get('/dashboard', ensureAuthenticated, (req, res, next) => {
-    res.render('dashboard')
+    let user = req.user;
+   
+    res.render('dashboard', { user: user})
 })
 
 /* GET users listing. */

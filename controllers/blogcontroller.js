@@ -14,7 +14,8 @@ home = asyncHandler(async (req, res, next) => {
   res.redirect('/blogs');
 })
 showformpage = asyncHandler(async (req, res, next) => {
-  res.render('addblogs');
+  let user = req.user;
+  res.render('addblogs', {user: user});
 })
 
 //post methods
