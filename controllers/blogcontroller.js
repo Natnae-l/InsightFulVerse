@@ -5,13 +5,15 @@ const moment = require('moment');
 showblogs = asyncHandler(async (req, res, next) => {
        blogs.find()
           .then(allBlogs => {
-            res.render('blog', { allBlogs: allBlogs })
+            res.render('blog', 
+            { allBlogs: allBlogs,
+              user: req.user})
           })   
       });
 
 home = asyncHandler(async (req, res, next) => {
 
-  res.redirect('/blogs');
+  res.redirect('login')
 })
 showformpage = asyncHandler(async (req, res, next) => {
   let user = req.user;

@@ -75,7 +75,7 @@ addUser = asyncHandler((req, res, next) => {
 // login user
 logInUser = (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/blogs',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);

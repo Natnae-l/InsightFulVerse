@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home |  Blog site</title>
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/dash.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/users/register">Be a member</a></li>
-                <li><a href="/addblogs">Add blogs</a></li>
-            </ul>
-        </nav>    
-    </header>
+    <%- include('./partials/header')%>
+    <%- include('./partials/nav')%>
+   
    <div>
         <main>
             <% allBlogs.forEach(item => {%>
@@ -30,7 +26,7 @@
             <p>&copy; 2022 My Website. All rights reserved.</p>
         </footer>    
    </div>
-   <section class="user"></section>
+   <%- include('./partials/footer')%>
 
 </body>
 </html>
