@@ -1,7 +1,15 @@
 const asyncHandler = require("express-async-handler");
 const blogs = require('../model/blogmodel');
 const moment = require('moment');
+const User = require('../model/usermodel');
 
+
+userBlogs = async (req, res, next) => {
+  let userBlg = await blogs.find({userId: res.locals.currentUser._id});
+  console.log(userBlg)
+
+  res.render('dashboard', {user: {}, userBlogs: userBlg})
+}
 showblogs = asyncHandler(async (req, res, next) => {
        blogs.find()
           .then(allBlogs => {
@@ -13,7 +21,7 @@ showblogs = asyncHandler(async (req, res, next) => {
 
 home = asyncHandler(async (req, res, next) => {
 
-  res.redirect('login')
+  res.redirect('/users/login')
 })
 showformpage = asyncHandler(async (req, res, next) => {
   let user = req.user;
@@ -22,8 +30,12 @@ showformpage = asyncHandler(async (req, res, next) => {
 
 //post methods
 addblog = asyncHandler( async (req, res, next) => {
+  let id = res.locals.currentUser._id;
+
   let newComing = req.body;
   newComing.date = moment(new Date()).format("MMMM, D YYYY");
+  newComing.userId = `${id}`;
+  console.log(newComing)
 
   let newBlog = new blogs(newComing);
   newBlog.save()
@@ -35,4 +47,4 @@ addblog = asyncHandler( async (req, res, next) => {
 
 
 
-module.exports = {showblogs, home, showformpage, addblog};
+module.exports = {showblogs, home, showformpage, addblog, userBlogs};

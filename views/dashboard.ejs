@@ -17,10 +17,12 @@
        
         <div class="card mb-3" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title font-popins">Title</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <p>02, Jan 2024</p>
-              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <% userBlogs.forEach(item => {%>
+                <h5 class="card-title font-popins"><%= item.title%></h5>
+                <p class="card-text"><%= item.description%></p>
+                <p><%= item.date%></p>
+                <button type="button" class="btn btn-outline-danger">Danger</button> 
+              <%})%>
         </div>
     </section>   
   </main>

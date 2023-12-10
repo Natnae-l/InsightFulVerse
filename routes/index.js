@@ -9,11 +9,7 @@ router.get('/',forwardAuthenticated, blogcontroller.home);
 router.get('/blogs', ensureAuthenticated, blogcontroller.showblogs);
 router.get('/addblogs', ensureAuthenticated, blogcontroller.showformpage);
 
-router.get('/dashboard', ensureAuthenticated, (req, res, next) => {
-    let user = req.user;
-   
-    res.render('dashboard', { user: user})
-})
+router.get('/dashboard', ensureAuthenticated, userBlogs)
 
 /* GET users listing. */
 
