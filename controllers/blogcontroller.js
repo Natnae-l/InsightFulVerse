@@ -5,22 +5,18 @@ const User = require('../model/usermodel');
 
 
 userBlogs = async (req, res, next) => {
-  let userBlg = await blogs.find({userId: res.locals.currentUser._id});
-  console.log(userBlg)
 
+  let userBlg = await blogs.find({userId: res.locals.currentUser._id});
   res.render('dashboard', {user: {}, userBlogs: userBlg})
 }
 showblogs = asyncHandler(async (req, res, next) => {
-       blogs.find()
-          .then(allBlogs => {
-            res.render('blog', 
-            { allBlogs: allBlogs,
-              user: req.user})
-          })   
-      });
+
+  let allBlogs = await blogs.find();
+  res.render('blog', { allBlogs: allBlogs, user: req.user})
+})
+       
 
 home = asyncHandler(async (req, res, next) => {
-
   res.redirect('/users/login')
 })
 showformpage = asyncHandler(async (req, res, next) => {
@@ -35,7 +31,6 @@ addblog = asyncHandler( async (req, res, next) => {
   let newComing = req.body;
   newComing.date = moment(new Date()).format("MMMM, D YYYY");
   newComing.userId = `${id}`;
-  console.log(newComing)
 
   let newBlog = new blogs(newComing);
   newBlog.save()
