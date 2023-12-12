@@ -7,11 +7,11 @@ const passport = require('passport');
 
 // get a registration form
 registerForm = asyncHandler(async (req, res, next) => {
-    res.render('register')
+    res.redirect('login1')
   });
 // get a login form
 loginForm = asyncHandler(async (req, res, next) => {
-    res.render('login')
+    res.render('login1')
   })
 
 // register a new user
