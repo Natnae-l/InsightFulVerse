@@ -9,13 +9,19 @@
             <%- include('./partials/header')%>
                 <form action="/addblog" method="post">
                     <div>
-                        <label for="name">Blog Name:</label>
-                        <input type="text" name="name" id="name" required> 
+                        <label for="">Post</label>
+                        <textarea name="description" id="" cols="30" rows="10" required placeholder="your post..."></textarea>
                     </div>
                     <div>
-                        <label for="">Blog Descrition:</label>
-                        <textarea name="description" id="" cols="30" rows="10" required></textarea>
+                        <label for="content">Content:</label>                    
+                        <select name="content" id="content">
+                            <option value="dev">Dev</option>
+                            <option value="design">Design</option>
+                            <option value="Copywriting">Copywriting</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
+
                     <button type="submit">post</button>
                 </form>
         </section>

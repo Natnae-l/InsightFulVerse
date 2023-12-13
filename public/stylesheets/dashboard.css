@@ -11,6 +11,7 @@
 }
 body {
   padding-inline: 4rem;
+  background-color: #f8f6f6;
 }
 
 .container{
@@ -23,7 +24,7 @@ nav{
   /* height: 100vh; */
   left: 0;
   background: #fff;
-  width: 280px;
+  width: 40%;
   overflow: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
@@ -71,6 +72,9 @@ a:hover{
   position: relative;
   bottom: 0;
   margin-top: 190px;
+}
+nav ul, nav ul li a {
+  width: 100%;
 }
 
 /* Main Section */
