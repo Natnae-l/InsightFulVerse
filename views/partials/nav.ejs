@@ -1,9 +1,28 @@
-<nav class=" p-4 mb-1 bg-body-tertiary rounded d-flex justify-content-between flex-column mb-3">
+<nav>
+        <ul>
+          <li><a href="#" class="logo">
+            <span class="nav-item">DashBoard</span>
+          </a></li>
 
-    <section class="d-flex gp-2 justify-content-between flex-column mb-3">
-            <a class="btn btn-outline-primary mb-2" href="/addblogs">ADD BLOGS</a> 
-            <a type="button" href="/dashboard" class="btn btn-outline-secondary">My blogs</a>
-    </section>
-
-    <a href="/users/logout" class="btn btn-outline-dark">Logout</a>
-  </nav>
+          <li><a href="/blogs">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a></li>          
+          <li><a href="/addblogs">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Share idea</span>
+          </a></li>
+          <li><a href="">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Profile</span>
+          </a></li>
+          <li><a href="/dashboard">
+            <i class="fas fa-cog"></i>
+            <span class="nav-item">My posts</span>
+          </a></li>
+          <li><a href="/users/logout" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a></li>
+        </ul>
+      </nav>
