@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let blogSchema = new Schema({
-    name: {type: String, required: true, minlength: 2},
+    content: {type: String, required: true},
     description: {type: String, required: true, minlength: 2},
     date: {type: String, required: true},
     userId: {type: String, required: true}

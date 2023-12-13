@@ -10,10 +10,40 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  padding-inline: 4rem;
+  /* padding-inline: 1.5rem; */
   background-color: #f8f6f6;
 }
-
+.design {
+  background-color: rgba(218, 96, 96, 0.215);
+  color: rgb(198, 5, 5);
+  padding: 5px 9px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.other {
+  padding: 3px 9px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: none;
+}
+.Copywriting {
+  background-color: rgba(219, 204, 106, 0.151);
+  color: rgb(248, 171, 6);
+  padding: 5px 9px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.dev{
+  background-color: rgba(96, 218, 133, 0.215);
+  color: rgb(5, 198, 114);
+  padding: 5px 9px;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
 .container{
   display: flex;
 }
@@ -24,7 +54,7 @@ nav{
   /* height: 100vh; */
   left: 0;
   background: #fff;
-  width: 40%;
+  width: 37%;
   overflow: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
