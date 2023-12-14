@@ -18,9 +18,8 @@ require('dotenv').config()
 
 //connect to database and start server
 let port = 3000;
-const mongoDB = 'mongodb+srv://blog-dev:G7SmDW7ISVNofaA0@myatlasclusteredu.sp4fkpp.mongodb.net/blog-app?retryWrites=true&w=majority';
 
-mongoose.connect(mongoDB)
+mongoose.connect(process.env.mongoDB_key)
         .then(() => {
           app.listen(port, () => console.log('connected'));
         })

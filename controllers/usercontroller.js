@@ -9,6 +9,10 @@ const passport = require('passport');
 registerForm = asyncHandler(async (req, res, next) => {
     res.redirect('login1')
   });
+// get user profile
+userProfile = async (req, res, next) => {
+  res.render('profile')
+}
 // get a login form
 loginForm = asyncHandler(async (req, res, next) => {
     res.render('login1')
@@ -92,4 +96,4 @@ logOutUser = (req, res) => {
 
   
 // export controllers
-module.exports = {registerForm, loginForm, authenticateUser, addUser, logOutUser, logInUser}
+module.exports = {registerForm, loginForm, authenticateUser, addUser, logOutUser, logInUser, userProfile}

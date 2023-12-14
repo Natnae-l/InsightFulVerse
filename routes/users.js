@@ -11,6 +11,9 @@ router.get('/register', forwardAuthenticated, userControllers.registerForm)
 // user login form
 router.get('/login', forwardAuthenticated, userControllers.loginForm)
 
+// user profile
+router.get('/profile', ensureAuthenticated, userControllers.userProfile)
+
 // register a new user
 
 router.post('/register', forwardAuthenticated, userControllers.authenticateUser, userControllers.addUser)
