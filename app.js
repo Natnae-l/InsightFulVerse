@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 
 const app = express();
 
+require('dotenv').config()
 
 
 //connect to database and start server
