@@ -16,11 +16,14 @@ router.get('/profile', ensureAuthenticated, userControllers.userProfile)
 
 // register a new user
 
-router.post('/register', forwardAuthenticated, userControllers.authenticateUser, userControllers.addUser)
+router.post('/register', forwardAuthenticated, userControllers.authenticateUser)
 
 //login a user
 
 router.post('/login', userControllers.logInUser);
+
+//update user 
+router.post('/update', ensureAuthenticated, userControllers.updateUser)
   
 // Logout
 router.get('/logout',ensureAuthenticated, userControllers.logOutUser);

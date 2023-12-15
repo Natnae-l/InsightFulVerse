@@ -36,7 +36,7 @@ authenticateUser = asyncHandler(async (req, res, next) => {
   }
 
   if (errors.length > 0) {
-    res.render('register', {
+    res.render('login1', {
       errors,
       name,
       email,
@@ -47,7 +47,7 @@ authenticateUser = asyncHandler(async (req, res, next) => {
     User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
-        res.render('login');
+        res.render('login1');
       } else {
         const newUser = new User({
           name,
@@ -70,11 +70,46 @@ authenticateUser = asyncHandler(async (req, res, next) => {
       }
     });
   }
-  next()
 })
-addUser = asyncHandler((req, res, next) => {
+
+// update user
+updateUser = async (req, res, next) => {
+  let user = await User.findOne({_id: res.locals.currentUser._id})
   
-})
+  if (user){
+    bcrypt.compare(req.body.oldPassword, user.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        let updater = {};
+        
+          if (req.body.name && req.body.name != user.name) updater.name = req.body.name;
+          if (req.body.email && req.body.email != user.email) updater.email = req.body.email;
+
+
+          if (typeof(req.body.newPassword) != undefined && req.body.oldPassword != req.body.newPassword){
+
+            bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(req.body.newPassword, salt, (err, hash) => {
+                if (err) throw err;
+                
+                updater.password = hash;
+                if (Object.values(updater).length > 0) {
+                    User.findByIdAndUpdate({_id: req.user._id}, updater)
+                      .then(data => {
+                        res.redirect('/users/logout')
+                      })
+                      .catch(err => console.log(err))
+                } else if(Object.values(updater).length == 0){
+                  res.redirect('/users/login')
+                }
+              })
+            })}         
+      } else {
+        res.send('User not updated')
+      }
+    });
+  }
+}
 
 // login user
 logInUser = (req, res, next) => {
@@ -96,4 +131,4 @@ logOutUser = (req, res) => {
 
   
 // export controllers
-module.exports = {registerForm, loginForm, authenticateUser, addUser, logOutUser, logInUser, userProfile}
+module.exports = {registerForm, loginForm, authenticateUser, logOutUser, logInUser, userProfile, updateUser}
