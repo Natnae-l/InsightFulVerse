@@ -9,20 +9,24 @@
   <section class="main">
     <%- include('./partials/header')%>
     <main >
-    <section>
-        <h3 >My blogs</h3> 
-        <div>
-            <div >
+    <section style="width: 800px;">
+        <h3 >My Posts</h3> 
+        <div class="myblogs">
+            
               <% userBlogs.forEach(item => {%>
-                <h5 ><%= item.content%></h5>
-                <p ><%= item.description%></p>
-                <p><%= item.date%></p>
-                <button type="button">Delete</button> 
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                  <h5 class="<%= item.content%>"><%= item.content%></h5>
+                  <p class="description">post: <%= item.description%></p>
+                  <p class="date">Date: <%= item.date%></p>
+                  <button type="button" class='button-59 delete' id='<%=item._id%>'>Delete</button>
+                </div>
               <%})%>
-        </div>
+        
     </section>   
   </main>
   </section>
 </div>
 </body>
 </html>
+
+

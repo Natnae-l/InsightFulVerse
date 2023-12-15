@@ -7,7 +7,7 @@ const User = require('../model/usermodel');
 userBlogs = async (req, res, next) => {
 
   let userBlg = await blogs.find({userId: res.locals.currentUser._id});
-  res.render('dashboard', {user: {}, userBlogs: userBlg})
+  res.render('dashboard', {userBlogs: userBlg})
 }
 showblogs = asyncHandler(async (req, res, next) => {
 
@@ -40,6 +40,16 @@ addblog = asyncHandler( async (req, res, next) => {
   res.redirect('/blogs');
 })
 
+// delete methods
+
+deleteBlog = async (req, res, next) => {
+  try {
+    let data = await blogs.findByIdAndDelete({_id: req.params.id});
+    res.json({redirect: '/blogs'})
+  } catch(err){
+    console.log(err)
+  }     
+}
 
 
-module.exports = {showblogs, home, showformpage, addblog, userBlogs};
+module.exports = {showblogs, home, showformpage, addblog, userBlogs, deleteBlog};

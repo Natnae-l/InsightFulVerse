@@ -20,4 +20,7 @@ router.get('/dashboard', ensureAuthenticated, userBlogs)
 // post requests
 router.post('/addblog', ensureAuthenticated, blogcontroller.addblog)
 
+// delete a particular blog
+router.delete('/blogs/:id',ensureAuthenticated, deleteBlog)
+
 module.exports = router;
