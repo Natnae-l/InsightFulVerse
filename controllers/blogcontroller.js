@@ -14,7 +14,10 @@ showblogs = asyncHandler(async (req, res, next) => {
   let allBlogs = await blogs.find();
   res.render('blog', { allBlogs: allBlogs, user: req.user})
 })
-       
+     
+forget = (req, res, next) => {
+  res.render('forget')
+}
 
 home = asyncHandler(async (req, res, next) => {
   res.redirect('/users/login')
@@ -52,4 +55,4 @@ deleteBlog = async (req, res, next) => {
 }
 
 
-module.exports = {showblogs, home, showformpage, addblog, userBlogs, deleteBlog};
+module.exports = {showblogs, home, showformpage, addblog, userBlogs, deleteBlog, forget};

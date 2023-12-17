@@ -8,6 +8,7 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 router.get('/check', (req, res) => {
     res.render('login1')
 })
+router.get('/forget', blogcontroller.forget)
 router.get('/',forwardAuthenticated, blogcontroller.home);
 router.get('/blogs', ensureAuthenticated, blogcontroller.showblogs);
 router.get('/addblogs', ensureAuthenticated, blogcontroller.showformpage);
